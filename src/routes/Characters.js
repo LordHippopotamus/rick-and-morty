@@ -1,18 +1,32 @@
 import { useQueryClient, useQuery } from "react-query";
-import { Container, SimpleGrid, Box, Heading, Image } from "@chakra-ui/react";
+import { useSearchParams } from "react-router-dom";
+import {
+  Container,
+  SimpleGrid,
+  Box,
+  Heading,
+  Image,
+  Center
+} from "@chakra-ui/react";
+import Pagination from "../components/Pagination";
 
 const Characters = () => {
   const queryClient = useQueryClient();
+  const [searchParams] = useSearchParams();
 
-  const { isSuccess, data } = useQuery("characters", async () => {
-    const response = await fetch("https://rickandmortyapi.com/api/character");
+  const page = +searchParams.get("page") || 1;
+
+  const { isSuccess, data } = useQuery(["characters", page], async () => {
+    const response = await fetch(
+      `https://rickandmortyapi.com/api/character?page=${page}`
+    );
     return response.json();
   });
 
   if (isSuccess) {
     return (
-      <Container my={8} maxW="6xl">
-        <SimpleGrid columns={[1, 2, 4]} spacing={4}>
+      <Container maxW="6xl">
+        <SimpleGrid my={8} columns={[1, 2, 4]} spacing={4}>
           {data.results.map((el) => (
             <Box
               borderWidth="1px"
@@ -27,6 +41,9 @@ const Characters = () => {
             </Box>
           ))}
         </SimpleGrid>
+        <Center my={8}>
+          <Pagination maxPages={42} active={page} />
+        </Center>
       </Container>
     );
   }

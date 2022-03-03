@@ -26,7 +26,7 @@ export default function App({ pages }) {
               <Button
                 key={el}
                 as={Link}
-                to={el === "Characters" ? "/" : el.toLowerCase()}
+                to={el.toLowerCase()}
                 variant="ghost"
                 ml={2}
               >
@@ -45,11 +45,7 @@ export default function App({ pages }) {
             />
             <MenuList>
               {pages.map((el) => (
-                <MenuItem
-                  key={el}
-                  as={Link}
-                  to={el === "Characters" ? "/" : el.toLowerCase()}
-                >
+                <MenuItem key={el} as={Link} to={el.toLowerCase()}>
                   {el}
                 </MenuItem>
               ))}
