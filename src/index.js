@@ -6,6 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 import App from "./App";
 import Characters from "./routes/Characters";
+import SingleCharacter from "./routes/SingleCharacter";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -24,6 +25,10 @@ ReactDOM.render(
           <Routes>
             <Route path="/" element={<App />}>
               <Route path="/characters" element={<Characters />} />
+              <Route
+                path="/characters/:characterId"
+                element={<SingleCharacter />}
+              />
             </Route>
           </Routes>
         </BrowserRouter>
