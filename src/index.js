@@ -7,7 +7,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import App from "./App";
 import Characters from "./routes/Characters";
 
-const client = new QueryClient();
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      suspense: true
+    }
+  }
+});
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
