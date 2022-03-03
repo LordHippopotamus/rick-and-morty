@@ -24,8 +24,6 @@ const SingleCharacter = () => {
     return response.json();
   });
 
-  console.log(character);
-
   return (
     <Container my={8}>
       <Heading>{character.name}</Heading>

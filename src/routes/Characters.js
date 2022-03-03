@@ -3,7 +3,6 @@ import { useSearchParams, Link } from "react-router-dom";
 import {
   Container,
   SimpleGrid,
-  Box,
   Heading,
   Image,
   Center,
@@ -18,17 +17,19 @@ const Characters = () => {
 
   const page = +searchParams.get("page") || 1;
 
-  const { isSuccess, data } = useQuery(["characters", page], async () => {
+  const { data } = useQuery(["characters", page], async () => {
     const response = await fetch(
       `https://rickandmortyapi.com/api/character?page=${page}`
     );
     return response.json();
   });
 
+  const { info, results: characters } = data;
+
   return (
     <Container maxW="6xl">
       <SimpleGrid my={8} columns={[1, 2, 4]} spacing={4}>
-        {data.results.map((el) => (
+        {characters.map((el) => (
           <LinkBox key={el.id} as="article" borderWidth="1px" rounded="lg">
             <Image w="100%" src={el.image} alt={el.name} />
             <LinkOverlay as={Link} to={`${el.id}`}>
@@ -40,7 +41,7 @@ const Characters = () => {
         ))}
       </SimpleGrid>
       <Center my={8}>
-        <Pagination maxPages={42} active={page} />
+        <Pagination maxPages={info.pages} active={page} />
       </Center>
     </Container>
   );
