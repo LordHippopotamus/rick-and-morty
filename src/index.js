@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ChakraProvider } from "@chakra-ui/react";
+import { extendTheme, ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 import App from "./App";
 import CharactersPage from "./modules/characters/list";
@@ -16,9 +16,14 @@ const client = new QueryClient({
   }
 });
 
-const rootElement = document.getElementById("root");
+const theme = extendTheme({
+  initialColorMode: "dark",
+  useSystemColorMode: false
+});
+
 ReactDOM.render(
   <StrictMode>
+    <ColorModeScript initialColorMode={theme.config.initialColorMode} />
     <QueryClientProvider client={client}>
       <ChakraProvider>
         <BrowserRouter>
@@ -35,5 +40,5 @@ ReactDOM.render(
       </ChakraProvider>
     </QueryClientProvider>
   </StrictMode>,
-  rootElement
+  document.getElementById("root")
 );
