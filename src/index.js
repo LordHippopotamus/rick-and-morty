@@ -7,6 +7,7 @@ import { extendTheme, ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import App from "./App";
 import CharactersPage from "./modules/characters/list";
 import CharacterPage from "./modules/characters/single";
+import LocationsPage from "./modules/locations/list";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -34,6 +35,7 @@ ReactDOM.render(
                 path="/characters/:characterId"
                 element={<CharacterPage />}
               />
+              <Route path="/locations" element={<LocationsPage />} />
             </Route>
           </Routes>
         </BrowserRouter>
