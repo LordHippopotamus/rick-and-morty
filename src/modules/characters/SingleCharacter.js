@@ -9,20 +9,14 @@ import {
   Th,
   Td
 } from "@chakra-ui/react";
-import { useQueryClient, useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { useFetchCharacterById } from "./useFetchCharacters";
 
 const SingleCharacter = () => {
-  const queryClient = useQueryClient();
   const params = useParams();
   const id = params.characterId;
 
-  const { data: character } = useQuery(["character", id], async () => {
-    const response = await fetch(
-      `https://rickandmortyapi.com/api/character/${id}`
-    );
-    return response.json();
-  });
+  const character = useFetchCharacterById(id);
 
   return (
     <Container my={8}>

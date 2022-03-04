@@ -5,8 +5,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import App from "./App";
-import Characters from "./routes/Characters";
-import SingleCharacter from "./routes/SingleCharacter";
+import Characters from "./modules/characters/Characters";
+import SingleCharacter from "./modules/characters/SingleCharacter";
 
 const client = new QueryClient({
   defaultOptions: {
