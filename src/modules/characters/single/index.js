@@ -10,9 +10,9 @@ import {
   Td
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import { useFetchCharacterById } from "./useFetchCharacters";
+import { useFetchCharacterById } from "./useFetchCharacterById";
 
-const SingleCharacter = () => {
+const CharacterPage = () => {
   const params = useParams();
   const id = params.characterId;
 
@@ -60,4 +60,4 @@ const SingleCharacter = () => {
   );
 };
 
-export default SingleCharacter;
+export default CharacterPage;

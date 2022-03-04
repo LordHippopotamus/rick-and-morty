@@ -5,8 +5,8 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ChakraProvider } from "@chakra-ui/react";
 
 import App from "./App";
-import Characters from "./modules/characters/Characters";
-import SingleCharacter from "./modules/characters/SingleCharacter";
+import CharactersPage from "./modules/characters/list";
+import CharacterPage from "./modules/characters/single";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -24,10 +24,10 @@ ReactDOM.render(
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />}>
-              <Route path="/characters" element={<Characters />} />
+              <Route path="/characters" element={<CharactersPage />} />
               <Route
                 path="/characters/:characterId"
-                element={<SingleCharacter />}
+                element={<CharacterPage />}
               />
             </Route>
           </Routes>
