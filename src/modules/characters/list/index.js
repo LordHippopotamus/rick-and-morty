@@ -1,16 +1,16 @@
 import { Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
 import { Container, SimpleGrid, Skeleton, Box } from "@chakra-ui/react";
-import SuspendedCharacters from "./SuspendedCharacters";
+import SuspendedCharactersList from "./SuspendedCharactersList";
 
 const CharactersPage = () => {
   const [searchParams] = useSearchParams();
   const page = +searchParams.get("page") || 1;
 
   return (
-    <Container my={8} maxW="6xl">
-      <Suspense
-        fallback={
+    <Suspense
+      fallback={
+        <Container my={8} maxW="6xl">
           <SimpleGrid my={8} columns={[1, 2, 4]} spacing={4}>
             {[
               1,
@@ -40,11 +40,11 @@ const CharactersPage = () => {
               </Box>
             ))}
           </SimpleGrid>
-        }
-      >
-        <SuspendedCharacters page={page} />
-      </Suspense>
-    </Container>
+        </Container>
+      }
+    >
+      <SuspendedCharactersList page={page} />
+    </Suspense>
   );
 };
 

@@ -1,7 +1,7 @@
 import { useQueryClient, useQuery } from "react-query";
 import CharactersList from "./CharactersList";
 
-const SuspendedCharacters = ({ page }) => {
+const SuspendedCharactersList = ({ page }) => {
   const queryClient = useQueryClient();
 
   const { data } = useQuery(["characters", page], async () => {
@@ -16,4 +16,4 @@ const SuspendedCharacters = ({ page }) => {
   return <CharactersList characters={results} pages={info.pages} page={page} />;
 };
 
-export default SuspendedCharacters;
+export default SuspendedCharactersList;

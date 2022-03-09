@@ -1,6 +1,7 @@
 import { useQueryClient, useQuery } from "react-query";
+import SingleCharacter from "./SingleCharacter";
 
-export const useFetchCharacterById = (id) => {
+const SuspendedSingleCharacter = ({ id }) => {
   const queryClient = useQueryClient();
 
   const { data } = useQuery(["characters", id], async () => {
@@ -10,5 +11,7 @@ export const useFetchCharacterById = (id) => {
     return response.json();
   });
 
-  return data;
+  return <SingleCharacter character={data} />;
 };
+
+export default SuspendedSingleCharacter;

@@ -1,14 +1,31 @@
+import { Suspense } from "react";
 import { useParams } from "react-router-dom";
-import { useFetchCharacterById } from "./useFetchCharacterById";
-import SingleCharacter from "./SingleCharacter";
+import { Container, Skeleton } from "@chakra-ui/react";
+import SuspendedSingleCharacter from "./SuspendedSingleCharacter";
 
 const CharacterPage = () => {
   const params = useParams();
   const id = params.characterId;
 
-  const character = useFetchCharacterById(id);
-
-  return <SingleCharacter character={character} />;
+  return (
+    <Suspense
+      fallback={
+        <Container my={8}>
+          <Skeleton h="30px" w="60%" />
+          <Skeleton my={4} h="300px" w="100%" />
+          <Skeleton mt={8} h="20px" />
+          <Skeleton mt={8} h="20px" />
+          <Skeleton mt={8} h="20px" />
+          <Skeleton mt={8} h="20px" />
+          <Skeleton mt={8} h="20px" />
+          <Skeleton mt={8} h="20px" />
+          <Skeleton mt={8} h="20px" />
+        </Container>
+      }
+    >
+      <SuspendedSingleCharacter id={id} />
+    </Suspense>
+  );
 };
 
 export default CharacterPage;
