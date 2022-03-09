@@ -7,7 +7,6 @@ const LocationPage = () => {
   const id = params.locationId;
 
   const location = useFetchLocationById(id);
-  console.log(location);
 
   return <SingleLocation location={location} />;
 };

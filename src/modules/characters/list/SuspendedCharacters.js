@@ -1,6 +1,7 @@
 import { useQueryClient, useQuery } from "react-query";
+import CharactersList from "./CharactersList";
 
-export const useFetchAllCharacters = (page) => {
+const SuspendedCharacters = ({ page }) => {
   const queryClient = useQueryClient();
 
   const { data } = useQuery(["characters", page], async () => {
@@ -10,5 +11,9 @@ export const useFetchAllCharacters = (page) => {
     return response.json();
   });
 
-  return data;
+  const { info, results } = data;
+
+  return <CharactersList characters={results} pages={info.pages} page={page} />;
 };
+
+export default SuspendedCharacters;

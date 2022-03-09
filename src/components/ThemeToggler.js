@@ -6,9 +6,9 @@ const ThemeToggler = () => {
   return (
     <Button
       variant="solid"
-      bg={colorMode === "light" ? "gray.300" : "gray.700"}
+      bg={colorMode === "light" ? "gray.100" : "gray.900"}
       _hover={{
-        bg: colorMode === "light" ? "gray.100" : "gray.900"
+        bg: colorMode === "light" ? "gray.300" : "gray.700"
       }}
       position="fixed"
       zIndex={10}
