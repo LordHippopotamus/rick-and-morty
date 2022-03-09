@@ -1,14 +1,50 @@
+import { Suspense } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useFetchAllLocations } from "./useFetchAllLocations";
-import LocationsList from "./LocationsList";
+import { Container, SimpleGrid, Skeleton, Box } from "@chakra-ui/react";
+import SuspendedLocationsList from "./SuspendedLocationsList";
 
 const LocationsPage = () => {
   const [searchParams] = useSearchParams();
   const page = +searchParams.get("page") || 1;
 
-  const { info, results } = useFetchAllLocations(page);
-
-  return <LocationsList locations={results} pages={info.pages} page={page} />;
+  return (
+    <Suspense
+      fallback={
+        <Container maxW="6xl">
+          <SimpleGrid my={8} columns={[1, 2, 4]} spacing={4}>
+            {[
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20
+            ].map((el) => (
+              <Box key={el}>
+                <Skeleton h="60px" />
+              </Box>
+            ))}
+          </SimpleGrid>
+        </Container>
+      }
+    >
+      <SuspendedLocationsList page={page} />;
+    </Suspense>
+  );
 };
 
 export default LocationsPage;

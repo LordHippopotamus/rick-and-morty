@@ -4,7 +4,7 @@ import SingleCharacter from "./SingleCharacter";
 const SuspendedSingleCharacter = ({ id }) => {
   const queryClient = useQueryClient();
 
-  const { data } = useQuery(["characters", id], async () => {
+  const { data } = useQuery(["character", id], async () => {
     const response = await fetch(
       `https://rickandmortyapi.com/api/character/${id}`
     );

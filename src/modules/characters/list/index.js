@@ -10,7 +10,7 @@ const CharactersPage = () => {
   return (
     <Suspense
       fallback={
-        <Container my={8} maxW="6xl">
+        <Container maxW="6xl">
           <SimpleGrid my={8} columns={[1, 2, 4]} spacing={4}>
             {[
               1,
