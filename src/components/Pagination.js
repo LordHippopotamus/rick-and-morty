@@ -18,6 +18,14 @@ const Pagination = ({ maxPages, active }) => {
     pages = [1, active - 1, active, active + 1, maxPages];
   }
 
+  if (maxPages <= 5) {
+    pages = [];
+    for (let i = 1; i <= maxPages; i++) {
+      console.log(i);
+      pages.push(i);
+    }
+  }
+
   return (
     <Flex>
       {pages.map((el) => (
