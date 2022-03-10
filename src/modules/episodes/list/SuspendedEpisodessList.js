@@ -4,7 +4,7 @@ import EpisodesList from "./EpisodesList";
 const SuspendedEpisodesList = ({ page }) => {
   const queryClient = useQueryClient();
 
-  const { data } = useQuery(["locations", page], async () => {
+  const { data } = useQuery(["episodes", page], async () => {
     const response = await fetch(
       `https://rickandmortyapi.com/api/episode?page=${page}`
     );

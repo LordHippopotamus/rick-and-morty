@@ -21,7 +21,6 @@ const Pagination = ({ maxPages, active }) => {
   if (maxPages <= 5) {
     pages = [];
     for (let i = 1; i <= maxPages; i++) {
-      console.log(i);
       pages.push(i);
     }
   }

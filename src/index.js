@@ -9,7 +9,8 @@ import CharactersPage from "./modules/characters/list";
 import CharacterPage from "./modules/characters/single";
 import LocationsPage from "./modules/locations/list";
 import LocationPage from "./modules/locations/single";
-import EpisdoesPage from "./modules/episodes/list";
+import EpisdesPage from "./modules/episodes/list";
+import EpisdePage from "./modules/episodes/single";
 
 const client = new QueryClient({
   defaultOptions: {
@@ -39,7 +40,8 @@ ReactDOM.render(
               />
               <Route path="/locations" element={<LocationsPage />} />
               <Route path="/locations/:locationId" element={<LocationPage />} />
-              <Route path="/episodes" element={<EpisdoesPage />} />
+              <Route path="/episodes" element={<EpisdesPage />} />
+              <Route path="/episodes/:episodeId" element={<EpisdePage />} />
             </Route>
           </Routes>
         </BrowserRouter>
