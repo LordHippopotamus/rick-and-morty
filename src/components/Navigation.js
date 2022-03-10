@@ -43,7 +43,7 @@ export default function App({ pages }) {
               icon={<HamburgerIcon />}
               variant="outline"
             />
-            <MenuList>
+            <MenuList zIndex={2}>
               {pages.map((el) => (
                 <MenuItem
                   key={el}
