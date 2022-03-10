@@ -1,6 +1,7 @@
 import { useQueryClient, useQuery } from "react-query";
+import SingleLocation from "./SingleLocation";
 
-export const useFetchLocationById = (id) => {
+const SuspendedLocation = ({ id }) => {
   const queryClient = useQueryClient();
 
   const { data } = useQuery(["location", id], async () => {
@@ -10,5 +11,7 @@ export const useFetchLocationById = (id) => {
     return response.json();
   });
 
-  return data;
+  return <SingleLocation location={data} />;
 };
+
+export default SuspendedLocation;

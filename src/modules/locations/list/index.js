@@ -35,7 +35,7 @@ const LocationsPage = () => {
               20
             ].map((el) => (
               <Box key={el}>
-                <Skeleton h="60px" />
+                <Skeleton h="80px" />
               </Box>
             ))}
           </SimpleGrid>
