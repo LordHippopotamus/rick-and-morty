@@ -33,11 +33,8 @@ ReactDOM.render(
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />}>
-              <Route path="/characters" element={<CharactersPage />} />
-              <Route
-                path="/characters/:characterId"
-                element={<CharacterPage />}
-              />
+              <Route index element={<CharactersPage />} />
+              <Route path="/:characterId" element={<CharacterPage />} />
               <Route path="/locations" element={<LocationsPage />} />
               <Route path="/locations/:locationId" element={<LocationPage />} />
               <Route path="/episodes" element={<EpisdesPage />} />
