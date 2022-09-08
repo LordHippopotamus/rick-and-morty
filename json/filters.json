@@ -1,0 +1,8 @@
+{
+  "character": {
+    "status": ["Alive", "Dead", "unknown"],
+    "species": [],
+    "type": [],
+    "gender": ["Female", "Male", "Gendeless", "unknown"]
+  }
+}
