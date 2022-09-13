@@ -4,5 +4,9 @@
     "species": [],
     "type": [],
     "gender": ["Female", "Male", "Gendeless", "unknown"]
+  },
+  "location": {
+    "type": [],
+    "dimension": []
   }
 }
