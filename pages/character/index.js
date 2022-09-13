@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
-import { Card, Filters } from '../components/character';
-import { Main, Grid, Wrapper, Pagination } from '../components/layout';
-import { getCharacter, getFilters } from '../lib/api';
+import { Card, Filters } from '../../components/character';
+import { Main, Grid, Wrapper, Pagination } from '../../components/layout';
+import { getCharacter, getFilters } from '../../lib/api';
 
 export const getServerSideProps = async context => {
   const characters = await getCharacter(context.query);
