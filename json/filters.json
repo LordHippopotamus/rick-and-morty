@@ -8,5 +8,9 @@
   "location": {
     "type": [],
     "dimension": []
+  },
+  "episode": {
+    "air_date": [],
+    "episode": []
   }
 }
