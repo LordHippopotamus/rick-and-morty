@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
-import { Card } from '../../components/episode';
-import { Filters } from '../../components/common';
+import { Filters, Card } from '../../components/common';
 import { Main, Grid, Wrapper, Pagination } from '../../components/layout';
 import { getEpisodes } from 'rickmortyapi';
 

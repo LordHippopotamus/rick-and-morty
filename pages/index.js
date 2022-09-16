@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import { getCharacters } from 'rickmortyapi';
-import { Card } from '../components/character';
-import { Filters } from '../components/common';
+import { Filters, Card } from '../components/common';
 import { Main, Grid, Wrapper, Pagination } from '../components/layout';
 
 export const getStaticProps = async () => {
