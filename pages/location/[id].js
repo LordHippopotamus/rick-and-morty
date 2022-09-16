@@ -1,9 +1,9 @@
 import { Single } from '../../components/location';
 import { Wrapper, Main } from '../../components/layout';
-import { getLocation } from '../../lib/api';
+import { getLocation, getLocations } from 'rickmortyapi';
 
 export const getStaticPaths = async () => {
-  const location = await getLocation();
+  const { data: location } = await getLocations();
   const count = location.info.count;
 
   const ids = [];
@@ -18,8 +18,8 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async context => {
-  const location = await getLocation({ id: context.params.id });
+export const getStaticProps = async ({ params }) => {
+  const { data: location } = await getLocation(+params.id);
   return { props: location };
 };
 

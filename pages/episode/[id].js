@@ -1,9 +1,9 @@
+import { getEpisode, getEpisodes } from 'rickmortyapi';
 import { Single } from '../../components/episode';
 import { Wrapper, Main } from '../../components/layout';
-import { getEpisode } from '../../lib/api';
 
 export const getStaticPaths = async () => {
-  const episode = await getEpisode();
+  const { data: episode } = await getEpisodes();
   const count = episode.info.count;
 
   const ids = [];
@@ -19,14 +19,9 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async context => {
-  let episode = await getEpisode({ id: context.params.id });
-  episode = {
-    name: episode.name,
-    airDate: episode.air_date,
-    code: episode.episode,
-    characters: episode.characters,
-  };
+export const getStaticProps = async ({ params }) => {
+  let { data: episode } = await getEpisode(+params.id);
+
   return {
     props: episode,
   };

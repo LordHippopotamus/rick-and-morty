@@ -1,29 +1,44 @@
 import { Box } from '@mui/material';
-import { Card, Filters } from '../../components/location';
+import { Card } from '../../components/location';
+import { Filters } from '../../components/common';
 import { Main, Grid, Wrapper, Pagination } from '../../components/layout';
-import { getLocation, getFilters } from '../../lib/api';
+import { getLocations } from 'rickmortyapi';
 
-export const getServerSideProps = async context => {
-  const locations = await getLocation(context.query);
-  const filters = await getFilters('location');
+export const getServerSideProps = async ({ query }) => {
+  const { data: locations } = await getLocations(query);
 
   return {
-    props: {
-      locations: locations,
-      filters,
-    },
+    props: { locations },
   };
 };
 
-const Location = ({ locations, filters }) => (
+const fields = [
+  {
+    label: 'Name',
+    sm: 6,
+    md: 3,
+  },
+  {
+    label: 'Type',
+    sm: 6,
+    md: 3,
+  },
+  {
+    label: 'Dimension',
+    sm: 6,
+    md: 3,
+  },
+];
+
+const Location = ({ locations }) => (
   <Wrapper>
     <Box display={{ lg: 'flex' }}>
       <Box display={{ xs: 'none', lg: 'block' }} flexBasis="24rem">
-        <Filters filters={filters} />
+        <Filters fields={fields} />
       </Box>
       <Main>
         <Box display={{ lg: 'none' }}>
-          <Filters filters={filters} />
+          <Filters fields={fields} button={{ sm: 6, md: 3 }} />
         </Box>
         <Grid list={locations.results} Component={Card} />
         <Pagination pages={locations.info.pages} pathname="location" />

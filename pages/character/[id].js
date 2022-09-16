@@ -1,9 +1,9 @@
+import { getCharacter, getCharacters } from 'rickmortyapi';
 import { Single } from '../../components/character';
 import { Wrapper, Main } from '../../components/layout';
-import { getCharacter } from '../../lib/api';
 
 export const getStaticPaths = async () => {
-  const character = await getCharacter();
+  const { data: character } = await getCharacters();
   const count = character.info.count;
 
   const ids = [];
@@ -19,8 +19,8 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async context => {
-  const character = await getCharacter({ id: context.params.id });
+export const getStaticProps = async ({ params }) => {
+  const { data: character } = await getCharacter(+params.id);
   return { props: character };
 };
 

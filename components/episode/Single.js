@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const findId = url => url.slice(url.lastIndexOf('/') + 1);
 
-const Single = ({ name, airDate, code, characters }) => (
+const Single = ({ name, air_date, episode, characters }) => (
   <Grid item xs={12} sm>
     <Grid container>
       <Typography variant="body2">Name:</Typography>
@@ -13,12 +13,12 @@ const Single = ({ name, airDate, code, characters }) => (
     <Grid container>
       <Typography variant="body2">Air Date:</Typography>
       &nbsp;
-      <Typography>{airDate}</Typography>
+      <Typography>{air_date}</Typography>
     </Grid>
     <Grid container>
-      <Typography variant="body2">Code:</Typography>
+      <Typography variant="body2">Episode:</Typography>
       &nbsp;
-      <Typography>{code}</Typography>
+      <Typography>{episode}</Typography>
     </Grid>
     <Grid container>
       <Typography variant="body2">Characters:</Typography>

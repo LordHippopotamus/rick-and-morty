@@ -1,26 +1,39 @@
 import { Box } from '@mui/material';
-import { Card, Filters } from '../../components/episode';
+import { Card } from '../../components/episode';
+import { Filters } from '../../components/common';
 import { Main, Grid, Wrapper, Pagination } from '../../components/layout';
-import { getEpisode, getFilters } from '../../lib/api';
+import { getEpisodes } from 'rickmortyapi';
 
-export const getServerSideProps = async context => {
-  const episodes = await getEpisode(context.query);
-  const filters = await getFilters('episode');
+export const getServerSideProps = async ({ query }) => {
+  const { data: episodes } = await getEpisodes(query);
 
   return {
-    props: { episodes, filters: { airDate: filters.air_date, code: filters.episode } },
+    props: { episodes },
   };
 };
 
-const Episode = ({ episodes, filters }) => (
+const fields = [
+  {
+    label: 'Name',
+    sm: 12,
+    md: 4,
+  },
+  {
+    label: 'Episode',
+    sm: 6,
+    md: 4,
+  },
+];
+
+const Episode = ({ episodes }) => (
   <Wrapper>
     <Box display={{ lg: 'flex' }}>
       <Box display={{ xs: 'none', lg: 'block' }} flexBasis="24rem">
-        <Filters filters={filters} />
+        <Filters fields={fields} />
       </Box>
       <Main>
         <Box display={{ lg: 'none' }}>
-          <Filters filters={filters} />
+          <Filters fields={fields} button={{ sm: 6, md: 4 }} />
         </Box>
         <Grid list={episodes.results} Component={Card} />
         <Pagination pages={episodes.info.pages} pathname="episode" />

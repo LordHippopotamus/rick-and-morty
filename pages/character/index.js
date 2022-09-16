@@ -1,29 +1,54 @@
 import { Box } from '@mui/material';
-import { Card, Filters } from '../../components/character';
+import { getCharacters } from 'rickmortyapi';
+import { Card } from '../../components/character';
+import { Filters } from '../../components/common';
 import { Main, Grid, Wrapper, Pagination } from '../../components/layout';
-import { getCharacter, getFilters } from '../../lib/api';
 
-export const getServerSideProps = async context => {
-  const characters = await getCharacter(context.query);
-  const filters = await getFilters('character');
+export const getServerSideProps = async ({ query }) => {
+  const { data: characters } = await getCharacters(query);
 
   return {
-    props: {
-      characters: characters,
-      filters,
-    },
+    props: { characters },
   };
 };
 
-const Character = ({ characters, filters }) => (
+const fields = [
+  {
+    label: 'Status',
+    sm: 6,
+    md: 3,
+  },
+  {
+    label: 'Species',
+    sm: 6,
+    md: 3,
+  },
+  {
+    label: 'Type',
+    sm: 6,
+    md: 3,
+  },
+  {
+    label: 'Gender',
+    sm: 6,
+    md: 3,
+  },
+  {
+    label: 'Name',
+    sm: 9,
+    md: 9,
+  },
+];
+
+const Character = ({ characters }) => (
   <Wrapper>
     <Box display={{ lg: 'flex' }}>
       <Box display={{ xs: 'none', lg: 'block' }} flexBasis="24rem">
-        <Filters filters={filters} />
+        <Filters fields={fields} />
       </Box>
       <Main>
         <Box display={{ lg: 'none' }}>
-          <Filters filters={filters} />
+          <Filters fields={fields} button={{ sm: 3 }} />
         </Box>
         <Grid list={characters.results} Component={Card} />
         <Pagination pages={characters.info.pages} pathname="character" />
