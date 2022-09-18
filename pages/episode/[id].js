@@ -1,5 +1,5 @@
 import { getEpisode, getEpisodes } from 'rickmortyapi';
-import { Single } from '../../components/episode';
+import { Single } from '../../components/common';
 import { Wrapper, Main } from '../../components/layout';
 
 export const getStaticPaths = async () => {

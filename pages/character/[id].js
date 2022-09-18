@@ -1,5 +1,5 @@
 import { getCharacter, getCharacters } from 'rickmortyapi';
-import { Single } from '../../components/character';
+import { Single } from '../../components/common';
 import { Wrapper, Main } from '../../components/layout';
 
 export const getStaticPaths = async () => {

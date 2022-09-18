@@ -1,4 +1,4 @@
-import { Single } from '../../components/location';
+import { Single } from '../../components/common';
 import { Wrapper, Main } from '../../components/layout';
 import { getLocation, getLocations } from 'rickmortyapi';
 
