@@ -3,12 +3,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const Card = ({ id, name, image }) => {
+const Card = ({ id, name, image, path }) => {
   const router = useRouter();
 
   return (
     <MuiCard sx={{ height: '100%' }}>
-      <Link href={router.pathname + '/' + id}>
+      <Link href={path ? path + '/' + id : router.pathname + '/' + id}>
         <CardActionArea sx={{ height: '100%' }}>
           {image ? (
             <Box display="block">

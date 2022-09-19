@@ -1,7 +1,7 @@
 import { TextField, Grid, Button, Paper, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
-const Filters = ({ fields, button = {} }) => {
+const Filters = ({ fields, button = {}, path }) => {
   const router = useRouter();
 
   const handleSubmit = event => {
@@ -14,7 +14,7 @@ const Filters = ({ fields, button = {} }) => {
       }
     }
 
-    router.push({ query });
+    router.push({ pathname: path, query });
   };
 
   return (

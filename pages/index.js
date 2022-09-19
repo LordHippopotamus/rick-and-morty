@@ -43,6 +43,7 @@ const Home = ({ characters }) => (
     list={characters.results}
     pages={characters.info.pages}
     button={{ sm: 3 }}
+    path="/character"
   />
 );
 
