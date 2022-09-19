@@ -1,6 +1,4 @@
-import { Box } from '@mui/material';
-import { Filters, Card } from '../../components/common';
-import { Main, Grid, Wrapper, Pagination } from '../../components/layout';
+import { Main } from '../../components/layout';
 import { getEpisodes } from 'rickmortyapi';
 
 export const getServerSideProps = async ({ query }) => {
@@ -25,20 +23,12 @@ const fields = [
 ];
 
 const Episode = ({ episodes }) => (
-  <Wrapper>
-    <Box display={{ lg: 'flex' }}>
-      <Box display={{ xs: 'none', lg: 'block' }} flexBasis="24rem">
-        <Filters fields={fields} />
-      </Box>
-      <Main>
-        <Box display={{ lg: 'none' }}>
-          <Filters fields={fields} button={{ sm: 6, md: 4 }} />
-        </Box>
-        <Grid list={episodes.results} Component={Card} />
-        <Pagination pages={episodes.info.pages} pathname="episode" />
-      </Main>
-    </Box>
-  </Wrapper>
+  <Main
+    fields={fields}
+    list={episodes.results}
+    pages={episodes.info.pages}
+    button={{ sm: 6, md: 4 }}
+  />
 );
 
 export default Episode;

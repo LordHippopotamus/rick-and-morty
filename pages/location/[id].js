@@ -1,5 +1,4 @@
 import { Single } from '../../components/common';
-import { Wrapper, Main } from '../../components/layout';
 import { getLocation, getLocations } from 'rickmortyapi';
 
 export const getStaticPaths = async () => {
@@ -23,12 +22,6 @@ export const getStaticProps = async ({ params }) => {
   return { props: location };
 };
 
-const SingleLocation = location => (
-  <Wrapper>
-    <Main>
-      <Single {...location} />
-    </Main>
-  </Wrapper>
-);
+const SingleLocation = location => <Single {...location} />;
 
 export default SingleLocation;

@@ -1,6 +1,4 @@
-import { Box } from '@mui/material';
-import { Filters, Card } from '../../components/common';
-import { Main, Grid, Wrapper, Pagination } from '../../components/layout';
+import { Main } from '../../components/layout';
 import { getLocations } from 'rickmortyapi';
 
 export const getServerSideProps = async ({ query }) => {
@@ -30,20 +28,12 @@ const fields = [
 ];
 
 const Location = ({ locations }) => (
-  <Wrapper>
-    <Box display={{ lg: 'flex' }}>
-      <Box display={{ xs: 'none', lg: 'block' }} flexBasis="24rem">
-        <Filters fields={fields} />
-      </Box>
-      <Main>
-        <Box display={{ lg: 'none' }}>
-          <Filters fields={fields} button={{ sm: 6, md: 3 }} />
-        </Box>
-        <Grid list={locations.results} Component={Card} />
-        <Pagination pages={locations.info.pages} pathname="location" />
-      </Main>
-    </Box>
-  </Wrapper>
+  <Main
+    fields={fields}
+    list={locations.results}
+    pages={locations.info.pages}
+    button={{ sm: 6, md: 3 }}
+  />
 );
 
 export default Location;

@@ -1,7 +1,5 @@
-import { Box } from '@mui/material';
 import { getCharacters } from 'rickmortyapi';
-import { Filters, Card } from '../components/common';
-import { Main, Grid, Wrapper, Pagination } from '../components/layout';
+import { Main } from '../components/layout';
 
 export const getStaticProps = async () => {
   const { data: characters } = await getCharacters();
@@ -40,20 +38,12 @@ const fields = [
 ];
 
 const Home = ({ characters }) => (
-  <Wrapper>
-    <Box display={{ lg: 'flex' }}>
-      <Box display={{ xs: 'none', lg: 'block' }} flexBasis="24rem">
-        <Filters fields={fields} />
-      </Box>
-      <Main>
-        <Box display={{ lg: 'none' }}>
-          <Filters fields={fields} button={{ sm: 3 }} />
-        </Box>
-        <Grid list={characters.results} Component={Card} />
-        <Pagination pages={characters.info.pages} pathname="character" />
-      </Main>
-    </Box>
-  </Wrapper>
+  <Main
+    fields={fields}
+    list={characters.results}
+    pages={characters.info.pages}
+    button={{ sm: 3 }}
+  />
 );
 
 export default Home;

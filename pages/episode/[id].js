@@ -1,6 +1,5 @@
 import { getEpisode, getEpisodes } from 'rickmortyapi';
 import { Single } from '../../components/common';
-import { Wrapper, Main } from '../../components/layout';
 
 export const getStaticPaths = async () => {
   const { data: episode } = await getEpisodes();
@@ -27,12 +26,6 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-const SingleEpisode = episode => (
-  <Wrapper>
-    <Main>
-      <Single {...episode} />
-    </Main>
-  </Wrapper>
-);
+const SingleEpisode = episode => <Single {...episode} />;
 
 export default SingleEpisode;

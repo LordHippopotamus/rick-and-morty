@@ -1,6 +1,5 @@
 import { getCharacter, getCharacters } from 'rickmortyapi';
 import { Single } from '../../components/common';
-import { Wrapper, Main } from '../../components/layout';
 
 export const getStaticPaths = async () => {
   const { data: character } = await getCharacters();
@@ -24,12 +23,6 @@ export const getStaticProps = async ({ params }) => {
   return { props: character };
 };
 
-const SingleCharacter = character => (
-  <Wrapper>
-    <Main>
-      <Single {...character} />
-    </Main>
-  </Wrapper>
-);
+const SingleCharacter = character => <Single {...character} />;
 
 export default SingleCharacter;

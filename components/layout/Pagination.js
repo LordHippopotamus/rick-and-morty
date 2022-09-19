@@ -1,13 +1,10 @@
 import { Pagination as MuiPagination } from '@mui/material';
 import { useRouter } from 'next/router';
 
-const Pagination = ({ pages, pathname }) => {
+const Pagination = ({ pages }) => {
   const router = useRouter();
   const handleChange = (event, value) => {
-    router.push({
-      pathname: '/' + pathname,
-      query: { ...router.query, page: value },
-    });
+    router.push({ query: { ...router.query, page: value } });
   };
   return (
     <MuiPagination
