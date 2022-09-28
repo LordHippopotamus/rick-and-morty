@@ -1,5 +1,5 @@
-import { Main } from '../../components/layout';
 import { getEpisodes } from 'rickmortyapi';
+import { Main } from 'components';
 
 export const getServerSideProps = async ({ query }) => {
   const { data: episodes } = await getEpisodes(query);

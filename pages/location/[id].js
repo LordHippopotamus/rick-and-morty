@@ -1,5 +1,5 @@
-import { Single } from '../../components/common';
 import { getLocation, getLocations } from 'rickmortyapi';
+import { Single } from 'components';
 
 export const getStaticPaths = async () => {
   const { data: location } = await getLocations();

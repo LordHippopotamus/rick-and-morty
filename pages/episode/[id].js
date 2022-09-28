@@ -1,5 +1,5 @@
 import { getEpisode, getEpisodes } from 'rickmortyapi';
-import { Single } from '../../components/common';
+import { Single } from 'components';
 
 export const getStaticPaths = async () => {
   const { data: episode } = await getEpisodes();

@@ -1,5 +1,5 @@
-import { Main } from '../../components/layout';
 import { getLocations } from 'rickmortyapi';
+import { Main } from 'components';
 
 export const getServerSideProps = async ({ query }) => {
   const { data: locations } = await getLocations(query);

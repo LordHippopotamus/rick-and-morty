@@ -1,5 +1,5 @@
 import { createTheme, CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
-import { Navigation } from '../components/layout';
+import { Navigation } from 'components';
 
 const pages = ['Character', 'Location', 'Episode'];
 

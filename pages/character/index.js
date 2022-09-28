@@ -1,5 +1,5 @@
 import { getCharacters } from 'rickmortyapi';
-import { Main } from '../../components/layout';
+import { Main } from 'components';
 
 export const getServerSideProps = async ({ query }) => {
   const { data: characters } = await getCharacters(query);
