@@ -10,7 +10,9 @@ const Main = ({ fields, list, pages, button, path = '' }) => {
   return (
     <>
       <Head>
-        <title>R&M | {pathname[1].toUpperCase() + pathname.slice(2) + 's'}</title>
+        <title>
+          R&M | {pathname !== '/' ? pathname[1].toUpperCase() + pathname.slice(2) : 'Character'}s
+        </title>
       </Head>
       <Box my={4}>
         <Box display={{ lg: 'flex' }}>
